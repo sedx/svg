@@ -121,6 +121,16 @@ func (p *Path) S(controlX2, controlY2, x, y types.Coordinate) *Path {
 	return p
 }
 
+// S is SVG command for shorthand/smooth quadratic Bézier curveto (relative version)
+func (p *Path) SR(controlX2, controlY2, x, y types.Coordinate) *Path {
+	p.addAction(Action{SR,
+		ActionParams{
+			Param{controlX2, controlY2},
+			Param{x, y},
+		}})
+	return p
+}
+
 // MarshalXMLAttr format length to attribute value
 func (d Data) MarshalXMLAttr(name xml.Name) (xml.Attr, error) {
 	if len(d) == 0 {

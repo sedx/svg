@@ -20,4 +20,6 @@ const (
 	CR = "c"
 	// S path command
 	S = "S"
+	// SR is s path command
+	SR = "s"
 )
