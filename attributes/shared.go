@@ -52,3 +52,11 @@ type ViewBoxed struct {
 	ViewBox             string `xml:"viewBox,attr,omitempty"`
 	PreserveAspectRatio string `xml:"preserveAspectRatio,attr,omitempty"`
 }
+
+type Transformable struct {
+	Transforms types.Transformations `xml:"transform,attr,omitempty"`
+}
+
+func (t *Transformable) Transform(transformation types.Transform) {
+	t.Transforms = append(t.Transforms, transformation)
+}

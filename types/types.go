@@ -80,3 +80,20 @@ const (
 	NonScalingStroke VectorEffect = "non-scaling-stroke"
 	None                          = "none"
 )
+
+type Transformations []Transform
+
+func (t Transformations) MarshalXMLAttr(name xml.Name) (xml.Attr, error) {
+	if len(t) == 0 {
+		return xml.Attr{}, nil
+	}
+	var transformations []string
+	for _, tr := range t {
+		transformations = append(transformations, tr.GetTransform())
+	}
+	return xml.Attr{Name: name, Value: strings.Join(transformations, " ")}, nil
+}
+
+type Transform interface {
+	GetTransform() string
+}
