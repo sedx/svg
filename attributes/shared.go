@@ -40,6 +40,13 @@ type ValueAnimated struct {
 	To   interface{} `xml:"to,attr,omitempty"`
 	// ‘calcMode’, ‘values’, ‘keyTimes’, ‘keySplines’, ‘from’, ‘to’, ‘by’
 }
+
+type Stroked struct {
+	StrokeLinecap types.Linecap      `xml:"stroke-linecap,attr,omitempty"`
+	StrokeWidth   types.Length       `xml:"stroke-width,attr,omitempty"`
+	VectorEffect  types.VectorEffect `xml:"vector-effect,attr,omitempty"`
+}
+
 type ViewBoxed struct {
 	// TODO make struct
 	ViewBox             string `xml:"viewBox,attr,omitempty"`

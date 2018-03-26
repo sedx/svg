@@ -8,6 +8,8 @@ import (
 	"github.com/sedx/svg/unit"
 )
 
+const inherit = "inherit"
+
 // XMLSpace is value of `xml:space` attributes
 type XMLSpace string
 
@@ -47,6 +49,9 @@ func (c Coordinate) String() string {
 
 // MarshalXMLAttr format coordinate to attribute value
 func (c Coordinate) MarshalXMLAttr(name xml.Name) (xml.Attr, error) {
+	if c.Value == nil {
+		return xml.Attr{}, nil
+	}
 	return xml.Attr{Name: name, Value: c.String()}, nil
 }
 
@@ -59,3 +64,19 @@ func (d AnimationDuration) MarshalXMLAttr(name xml.Name) (xml.Attr, error) {
 }
 
 type FillType string
+
+type Linecap string
+
+const (
+	Butt    Linecap = "butt"
+	Round           = "round"
+	Square          = "square"
+	Inherit         = VectorEffect(inherit)
+)
+
+type VectorEffect string
+
+const (
+	NonScalingStroke VectorEffect = "non-scaling-stroke"
+	None                          = "none"
+)

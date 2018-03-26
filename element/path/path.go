@@ -15,6 +15,7 @@ import (
 // Path is SVG `path` element
 type Path struct {
 	element.SVGElement
+	attributes.Stroked
 	D Data `xml:"d,attr,omitempty"`
 	animation.Animated
 	XMLName xml.Name `xml:"path"`
