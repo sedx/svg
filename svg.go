@@ -111,3 +111,10 @@ type Struct interface {
 func Style(styles string) *style.Style {
 	return &style.Style{Content: styles}
 }
+
+func Symbol(ID string) *structure.Symbol {
+	s := &structure.Symbol{}
+	s.ID = ID
+	return s
+}
+
