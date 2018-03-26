@@ -105,7 +105,7 @@ func Path() *path.Path {
 // Struct interface realized by svg struct elements
 // that can add nested elements
 type Struct interface {
-	Add(e element.Element)
+	Add(el ...element.Element)
 }
 
 func Style(styles string) *style.Style {

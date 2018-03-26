@@ -37,6 +37,6 @@ type SVGContainer struct {
 }
 
 // Add append element to elements slice
-func (s *SVGContainer) Add(e Element) {
-	s.Elements = append(s.Elements, e)
+func (s *SVGContainer) Add(el ...Element) {
+	s.Elements = append(s.Elements, el...)
 }
