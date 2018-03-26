@@ -48,6 +48,10 @@ type Stroked struct {
 	VectorEffect  types.VectorEffect `xml:"vector-effect,attr,omitempty"`
 }
 
+type Filled struct {
+	Fill string `xml:"fill,attr,omitempty"`
+}
+
 type ViewBoxed struct {
 	// TODO make struct
 	ViewBox             string `xml:"viewBox,attr,omitempty"`
