@@ -1,11 +1,6 @@
 package svg
 
 import (
-	"encoding/xml"
-	"io"
-	"net/http"
-
-	"github.com/sedx/svg/attributes"
 	"github.com/sedx/svg/unit"
 
 	"github.com/sedx/svg/element"
@@ -17,40 +12,8 @@ import (
 	"github.com/sedx/svg/types"
 )
 
-// SVG is svg document
-type SVG struct {
-	attributes.Measured
-	element.SVGContainer
-	// TODO make struct
-	ViewBox             string   `xml:"viewBox,attr"`
-	PreserveAspectRatio string   `xml:"preserveAspectRatio,attr"`
-	XMLName             xml.Name `xml:"svg"`
-}
-
-type svgForMarshal struct {
-	*SVG
-	Version string `xml:"version,attr"`
-	Ns      string `xml:"xmlns,attr"`
-	Link    string `xml:"xlink,attr"`
-}
-
-// Marshal convert SVG document to byte slice
-func (s *SVG) Marshal() ([]byte, error) {
-	return xml.Marshal(s.prepare())
-}
-
-// MarshalIndent onvert SVG document to idented byte slice
-func (s *SVG) MarshalIndent() ([]byte, error) {
-	return xml.MarshalIndent(s.prepare(), "", " ")
-}
-
-func (s *SVG) prepare() *svgForMarshal {
-	return &svgForMarshal{
-		SVG:     s,
-		Version: "1.1",
-		Ns:      "http://www.w3.org/2000/svg",
-		Link:    "http://www.w3.org/1999/xlink",
-	}
+func SVG() *structure.SVG {
+	return &structure.SVG{}
 }
 
 // Length return svg length type
@@ -143,16 +106,6 @@ func Path() *path.Path {
 // that can add nested elements
 type Struct interface {
 	Add(e element.Element)
-}
-
-func (s *SVG) Serve(w http.ResponseWriter) {
-	w.Header().Set("Content-Type", "image/svg+xml")
-	b, err := s.MarshalIndent()
-	if err != nil {
-		w.WriteHeader(http.StatusInternalServerError)
-		io.WriteString(w, err.Error())
-	}
-	w.Write(b)
 }
 
 func Style(styles string) *style.Style {
