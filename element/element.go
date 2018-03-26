@@ -10,6 +10,7 @@ import (
 // Element is fake interface to filter elements
 type Element interface {
 	MarshalXMLAttr(name xml.Name) (xml.Attr, error)
+	GetID() string
 }
 
 // SVGElement used for composition to realise Element interface
@@ -22,7 +23,9 @@ type SVGElement struct {
 	Style string         `xml:"style,attr,omitempty"`
 }
 
-// func (s SVGElement) element() {}
+func (s SVGElement) GetID() string {
+	return s.ID
+}
 
 func (s SVGElement) MarshalXMLAttr(name xml.Name) (xml.Attr, error) {
 	if s.ID == "" {
