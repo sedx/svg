@@ -40,3 +40,8 @@ type ValueAnimated struct {
 	To   interface{} `xml:"to,attr,omitempty"`
 	// ‘calcMode’, ‘values’, ‘keyTimes’, ‘keySplines’, ‘from’, ‘to’, ‘by’
 }
+type ViewBoxed struct {
+	// TODO make struct
+	ViewBox             string `xml:"viewBox,attr,omitempty"`
+	PreserveAspectRatio string `xml:"preserveAspectRatio,attr,omitempty"`
+}
