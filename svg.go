@@ -118,3 +118,8 @@ func Symbol(ID string) *structure.Symbol {
 	return s
 }
 
+func Use(e element.Element) *structure.Use {
+	u := &structure.Use{}
+	u.XLinkHref = e
+	return u
+}
