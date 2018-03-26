@@ -3,11 +3,11 @@ package style
 import (
 	"encoding/xml"
 
-	"github.com/sedx/svg/attributes"
+	"github.com/sedx/svg/element"
 )
 
 type Style struct {
-	attributes.Core
+	element.SVGElement
 	Content string   `xml:",chardata"`
 	XMLName xml.Name `xml:"style"`
 }

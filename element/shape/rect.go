@@ -4,10 +4,11 @@ import (
 	"encoding/xml"
 
 	"github.com/sedx/svg/attributes"
+	"github.com/sedx/svg/element"
 )
 
 type Rect struct {
-	attributes.Core
+	element.SVGElement
 	attributes.Positioned
 	attributes.Measured
 	attributes.Rounded

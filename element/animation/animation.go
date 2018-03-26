@@ -10,7 +10,6 @@ import (
 
 //
 type Animate struct {
-	attributes.Core
 	attributes.AnimationTimed
 	attributes.ValueAnimated
 	AttributeType AttributeType `xml:"attributeType,attr,omitempty"`
