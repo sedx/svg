@@ -1,6 +1,8 @@
 package attributes
 
 import (
+	"encoding/xml"
+
 	"github.com/sedx/svg/types"
 )
 
@@ -28,8 +30,13 @@ type Centred struct {
 	Y types.Coordinate `xml:"cy,attr"`
 }
 
+type AnimationBegin interface {
+	GetBeginValue() string
+	MarshalXMLAttr(name xml.Name) (xml.Attr, error)
+}
+
 type AnimationTimed struct {
-	Begin types.AnimationDuration `xml:"begin,attr,omitempty"`
+	Begin AnimationBegin          `xml:"begin,attr,omitempty"`
 	Dur   types.AnimationDuration `xml:"dur,attr,omitempty"`
 	Fill  types.FillType          `xml:"fill,attr,omitempty"`
 	//  ‘end’, ‘min’, ‘max’, ‘restart’, ‘repeatCount’, ‘repeatDur’, ‘fill’
