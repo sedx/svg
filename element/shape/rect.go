@@ -12,5 +12,8 @@ type Rect struct {
 	attributes.Positioned
 	attributes.Measured
 	attributes.Rounded
+	attributes.Filled
+	attributes.Stroked
+	attributes.Transformable
 	XMLName xml.Name `xml:"rect"`
 }
