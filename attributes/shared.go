@@ -42,6 +42,7 @@ type ValueAnimated struct {
 }
 
 type Stroked struct {
+	Stroke        string             `xml:"stroke,attr,omitempty"`
 	StrokeLinecap types.Linecap      `xml:"stroke-linecap,attr,omitempty"`
 	StrokeWidth   types.Length       `xml:"stroke-width,attr,omitempty"`
 	VectorEffect  types.VectorEffect `xml:"vector-effect,attr,omitempty"`
