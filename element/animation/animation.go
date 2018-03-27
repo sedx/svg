@@ -4,13 +4,16 @@ import (
 	"encoding/xml"
 	"time"
 
+	"github.com/sedx/svg/element"
+
 	"github.com/sedx/svg/attributes"
 	"github.com/sedx/svg/types"
 )
 
 //
 type Animate struct {
-	attributes.AnimationTimed
+	TimigAttributes
+	element.SVGElement
 	attributes.ValueAnimated
 	AttributeType AttributeType `xml:"attributeType,attr,omitempty"`
 	AttributeName string        `xml:"attributeName,attr,omitempty"`
@@ -24,7 +27,11 @@ type AnimationElement interface {
 }
 
 type Animated struct {
-	Animations []AnimationElement `xml:"anim"`
+	Animations []AnimationElement
+}
+
+func (a *Animated) AddAnimation(e AnimationElement) {
+	a.Animations = append(a.Animations, e)
 }
 
 type AttributeType string

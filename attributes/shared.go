@@ -30,18 +30,6 @@ type Centred struct {
 	Y types.Coordinate `xml:"cy,attr"`
 }
 
-type AnimationBegin interface {
-	GetBeginValue() string
-	MarshalXMLAttr(name xml.Name) (xml.Attr, error)
-}
-
-type AnimationTimed struct {
-	Begin AnimationBegin          `xml:"begin,attr,omitempty"`
-	Dur   types.AnimationDuration `xml:"dur,attr,omitempty"`
-	Fill  types.FillType          `xml:"fill,attr,omitempty"`
-	//  ‘end’, ‘min’, ‘max’, ‘restart’, ‘repeatCount’, ‘repeatDur’, ‘fill’
-}
-
 type ValueAnimated struct {
 	From interface{} `xml:"from,attr,omitempty"`
 	To   interface{} `xml:"to,attr,omitempty"`
