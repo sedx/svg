@@ -10,6 +10,8 @@ const (
 	MR Command = "m"
 	// L path command
 	L = "L"
+	// LR is l path command
+	LR = "l"
 	// Q path command
 	Q = "Q"
 	// T path command
@@ -22,4 +24,6 @@ const (
 	S = "S"
 	// SR is s path command
 	SR = "s"
+	// Z is Z path command
+	Z = "Z"
 )

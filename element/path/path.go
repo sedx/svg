@@ -80,6 +80,12 @@ func (p *Path) L(x, y types.Coordinate) *Path {
 	return p
 }
 
+// LR is SVG `lineto` path command (relative version)
+func (p *Path) LR(x, y types.Coordinate) *Path {
+	p.addAction(Action{LR, ActionParams{Param{x, y}}})
+	return p
+}
+
 // Q is SVG `quadratic Bézier` curve commands
 func (p *Path) Q(controlX, controlY, x, y types.Coordinate) *Path {
 	p.addAction(Action{Q, ActionParams{Param{controlX, controlY}, Param{x, y}}})
@@ -131,6 +137,12 @@ func (p *Path) SR(controlX2, controlY2, x, y types.Coordinate) *Path {
 			Param{controlX2, controlY2},
 			Param{x, y},
 		}})
+	return p
+}
+
+// Z  is SVG `closepath` path command
+func (p *Path) Z() *Path {
+	p.addAction(Action{Command: Z})
 	return p
 }
 
