@@ -3,6 +3,7 @@ package animation
 import (
 	"encoding/xml"
 	"fmt"
+	"time"
 
 	"github.com/sedx/svg/element"
 	"github.com/sedx/svg/types"
@@ -11,7 +12,7 @@ import (
 type BeginEvent struct {
 	Element element.Element
 	Event   string
-	Delay   types.AnimationDuration
+	Delay   time.Duration
 }
 
 func (b BeginEvent) MarshalXMLAttr(name xml.Name) (xml.Attr, error) {
@@ -22,5 +23,5 @@ func (b BeginEvent) MarshalXMLAttr(name xml.Name) (xml.Attr, error) {
 }
 
 func (b BeginEvent) GetBeginValue() string {
-	return fmt.Sprintf("%s.%s+%s", b.Element.GetID(), b.Event, b.Delay.GetBeginValue())
+	return fmt.Sprintf("%s.%s+%s", b.Element.GetID(), b.Event, types.AnimationDuration(b.Delay).GetBeginValue())
 }
