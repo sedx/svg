@@ -43,8 +43,14 @@ type Stroked struct {
 	VectorEffect  types.VectorEffect `xml:"vector-effect,attr,omitempty"`
 }
 
+type Filling interface {
+	GetFill() string
+	MarshalXMLAttr(xml.Name) (xml.Attr, error)
+}
+
 type Filled struct {
-	Fill string `xml:"fill,attr,omitempty"`
+	Fill Filling `xml:"fill,attr,omitempty"`
+}
 }
 
 type ViewBoxed struct {
