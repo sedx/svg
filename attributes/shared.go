@@ -51,6 +51,11 @@ type Filling interface {
 type Filled struct {
 	Fill Filling `xml:"fill,attr,omitempty"`
 }
+
+type Stoped struct {
+	StopColor string `xml:"stop-color,attr,omitempty"`
+	// todo Opacity struct
+	StopOpacity string `xml:"stop-opacity,attr,omitempty"`
 }
 
 type ViewBoxed struct {
