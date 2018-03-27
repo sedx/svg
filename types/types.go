@@ -101,3 +101,17 @@ func (t Transformations) MarshalXMLAttr(name xml.Name) (xml.Attr, error) {
 type Transform interface {
 	GetTransform() string
 }
+
+type Color string
+
+func (c Color) GetFill() string {
+	return string(c)
+}
+
+func (c Color) MarshalXMLAttr(name xml.Name) (xml.Attr, error) {
+	var color string
+	if color = c.GetFill(); color == "" {
+		return xml.Attr{}, nil
+	}
+	return xml.Attr{Name: name, Value: color}, nil
+}
