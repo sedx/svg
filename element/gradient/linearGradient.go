@@ -20,8 +20,8 @@ type gradient struct {
 	GradientUnits string `xml:"gradientUnits,attr,omitempty"`
 }
 
-func (g *gradient) AddStop(s *Stop) {
-	g.Stops = append(g.Stops, s)
+func (g *gradient) AddStop(s ...*Stop) {
+	g.Stops = append(g.Stops, s...)
 }
 
 func (g gradient) GetFill() string {
@@ -44,4 +44,3 @@ type LinearGradient struct {
 	Y2      types.Coordinate `xml:"y2,attr,omitempty"`
 	XMLName xml.Name         `xml:"linearGradient"`
 }
-
