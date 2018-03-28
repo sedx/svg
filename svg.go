@@ -108,6 +108,10 @@ type Struct interface {
 	Add(el ...element.Element)
 }
 
+type Element interface {
+	element.Element
+}
+
 func Style(styles string) *style.Style {
 	return &style.Style{Content: styles}
 }
