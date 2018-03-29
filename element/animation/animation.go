@@ -29,8 +29,8 @@ type Animated struct {
 	Animations []AnimationElement
 }
 
-func (a *Animated) AddAnimation(e AnimationElement) {
-	a.Animations = append(a.Animations, e)
+func (a *Animated) AddAnimation(e ...AnimationElement) {
+	a.Animations = append(a.Animations, e...)
 }
 
 type AttributeType string
