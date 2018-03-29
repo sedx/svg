@@ -3,6 +3,8 @@ package shape
 import (
 	"encoding/xml"
 
+	"github.com/sedx/svg/element/animation"
+
 	"github.com/sedx/svg/element"
 
 	"github.com/sedx/svg/attributes"
@@ -13,6 +15,7 @@ import (
 type Circle struct {
 	element.SVGElement
 	attributes.Centred
+	animation.Animated
 	R       types.Length `xml:"r,attr"`
 	XMLName xml.Name     `xml:"circle"`
 }
