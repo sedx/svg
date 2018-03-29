@@ -2,6 +2,7 @@ package attributes
 
 import (
 	"encoding/xml"
+	"fmt"
 
 	"github.com/sedx/svg/types"
 )
@@ -65,9 +66,34 @@ type Transformable struct {
 func (t *Transformable) Transform(transformation types.Transform) {
 	t.Transforms = append(t.Transforms, transformation)
 }
+
+type Filtered struct {
+	Positioned
+	Measured
+	Result string `xml:"result,attr"`
+}
+
+func (f Filtered) GetOut() (string, error) {
+	if f.Result == "" {
+		return "", fmt.Errorf("Result name not configured for filter")
+	}
+	return f.Result, nil
+}
+
+type Filter interface {
+	GetFilterFuncIRI() (string, error)
+	MarshalXMLAttr(xml.Name) (xml.Attr, error)
+}
+
 type Core struct {
 	ID    string         `xml:"id,attr,omitempty"`
 	Base  string         `xml:"base,attr,omitempty"`
 	Lang  string         `xml:"lang,attr,omitempty"`
 	Space types.XMLSpace `xml:"space,attr,omitempty"`
+}
+
+type Presenation struct {
+	Filled
+	Stroked
+	Filter Filter `xml:"filter,attr,omitempty"`
 }
