@@ -115,3 +115,10 @@ func (c Color) MarshalXMLAttr(name xml.Name) (xml.Attr, error) {
 	}
 	return xml.Attr{Name: name, Value: color}, nil
 }
+
+type CoordinateSystemUnits string
+
+const (
+	UserSpaceOnUse    CoordinateSystemUnits = "userSpaceOnUse"
+	ObjectBoundingBox                       = "objectBoundingBox"
+)
