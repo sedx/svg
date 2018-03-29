@@ -6,15 +6,14 @@ import (
 
 	"github.com/sedx/svg/element"
 
-	"github.com/sedx/svg/attributes"
 	"github.com/sedx/svg/types"
 )
 
 //
 type Animate struct {
-	TimigAttributes
 	element.SVGElement
-	attributes.ValueAnimated
+	TimigAttributes
+	ValueAttributes
 	AttributeType AttributeType `xml:"attributeType,attr,omitempty"`
 	AttributeName string        `xml:"attributeName,attr,omitempty"`
 	XMLName       xml.Name      `xml:"animate"`

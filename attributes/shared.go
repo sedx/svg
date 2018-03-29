@@ -30,12 +30,6 @@ type Centred struct {
 	Y types.Coordinate `xml:"cy,attr"`
 }
 
-type ValueAnimated struct {
-	From interface{} `xml:"from,attr,omitempty"`
-	To   interface{} `xml:"to,attr,omitempty"`
-	// ‘calcMode’, ‘values’, ‘keyTimes’, ‘keySplines’, ‘from’, ‘to’, ‘by’
-}
-
 type Stroked struct {
 	Stroke        string             `xml:"stroke,attr,omitempty"`
 	StrokeLinecap types.Linecap      `xml:"stroke-linecap,attr,omitempty"`
