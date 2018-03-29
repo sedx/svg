@@ -6,7 +6,6 @@ import (
 	"time"
 
 	"github.com/sedx/svg/element"
-	"github.com/sedx/svg/types"
 )
 
 type BeginEvent struct {
@@ -23,5 +22,5 @@ func (b BeginEvent) MarshalXMLAttr(name xml.Name) (xml.Attr, error) {
 }
 
 func (b BeginEvent) GetBeginValue() string {
-	return fmt.Sprintf("%s.%s+%s", b.Element.GetID(), b.Event, types.AnimationDuration(b.Delay).GetBeginValue())
+	return fmt.Sprintf("%s.%s+%s", b.Element.GetID(), b.Event, Duration(b.Delay).GetBeginValue())
 }

@@ -4,7 +4,6 @@ import (
 	"encoding/xml"
 	"fmt"
 	"strings"
-	"time"
 
 	"github.com/sedx/svg/unit"
 )
@@ -54,17 +53,6 @@ func (c Coordinate) MarshalXMLAttr(name xml.Name) (xml.Attr, error) {
 		return xml.Attr{}, nil
 	}
 	return xml.Attr{Name: name, Value: c.String()}, nil
-}
-
-// AnimationDuration
-type AnimationDuration time.Duration
-
-func (d AnimationDuration) GetBeginValue() string {
-	return fmt.Sprint(float64(d) / float64(time.Second))
-}
-
-func (d AnimationDuration) MarshalXMLAttr(name xml.Name) (xml.Attr, error) {
-	return xml.Attr{Name: name, Value: d.GetBeginValue()}, nil
 }
 
 type FillType string

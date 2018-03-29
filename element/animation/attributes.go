@@ -21,10 +21,10 @@ type AnimationBegin interface {
 }
 
 type TimigAttributes struct {
-	Begin   AnimationBegin          `xml:"begin,attr,omitempty"`
-	Dur     types.AnimationDuration `xml:"dur,attr,omitempty"`
-	Fill    types.FillType          `xml:"fill,attr,omitempty"`
-	Restart restartAnimation        `xml:"restart,attr,omitempty"`
+	Begin   AnimationBegin   `xml:"begin,attr,omitempty"`
+	Dur     Duration         `xml:"dur,attr,omitempty"`
+	Fill    types.FillType   `xml:"fill,attr,omitempty"`
+	Restart restartAnimation `xml:"restart,attr,omitempty"`
 	//  ‘end’, ‘min’, ‘max’, ‘restart’, ‘repeatCount’, ‘repeatDur’, ‘fill’
 }
 

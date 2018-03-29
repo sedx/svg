@@ -53,7 +53,7 @@ func (a *Animated) AnimateCSS(attributeName string, from, to interface{}, dur ti
 	}
 	anim.From = from
 	anim.To = to
-	anim.Dur = types.AnimationDuration(dur)
+	anim.Dur = Duration(dur)
 	a.Animations = append(a.Animations, anim)
 	return anim
 }
