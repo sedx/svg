@@ -65,3 +65,9 @@ type Transformable struct {
 func (t *Transformable) Transform(transformation types.Transform) {
 	t.Transforms = append(t.Transforms, transformation)
 }
+type Core struct {
+	ID    string         `xml:"id,attr,omitempty"`
+	Base  string         `xml:"base,attr,omitempty"`
+	Lang  string         `xml:"lang,attr,omitempty"`
+	Space types.XMLSpace `xml:"space,attr,omitempty"`
+}
