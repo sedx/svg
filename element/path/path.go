@@ -40,14 +40,14 @@ func (d Data) String() string {
 // ActionParams is params for path command
 type ActionParams []Param
 
-type Param []types.Coordinate
+type Param []interface{}
 
 func (p Param) String() string {
-	var param []string
-	for _, coordinate := range p {
-		param = append(param, coordinate.String())
+	var params []string
+	for _, param := range p {
+		params = append(params, fmt.Sprint(param))
 	}
-	return strings.Join(param, ",")
+	return strings.Join(params, ",")
 }
 
 // Action is one piece of path data
@@ -136,6 +136,40 @@ func (p *Path) SR(controlX2, controlY2, x, y types.Coordinate) *Path {
 	p.addAction(Action{SR,
 		ActionParams{
 			Param{controlX2, controlY2},
+			Param{x, y},
+		}})
+	return p
+}
+
+// A  is SVG `A` path command
+func (p *Path) A(rx, ry types.Coordinate, xAxisRotation float64, largeArcFlag, sweepFlag bool, x, y types.Coordinate) *Path {
+	return p.arcCmd(false, rx, ry, xAxisRotation, largeArcFlag, sweepFlag, x, y)
+}
+
+// AR  is SVG `a` path command
+func (p *Path) AR(rx, ry types.Coordinate, xAxisRotation float64, largeArcFlag, sweepFlag bool, x, y types.Coordinate) *Path {
+	return p.arcCmd(true, rx, ry, xAxisRotation, largeArcFlag, sweepFlag, x, y)
+}
+
+func (p *Path) arcCmd(isRelative bool, rx, ry types.Coordinate, xAxisRotation float64, largeArcFlag, sweepFlag bool, x, y types.Coordinate) *Path {
+	var isLarge int
+	var isSweep int
+	var cmd Command
+	if largeArcFlag {
+		isLarge = 1
+	}
+	if sweepFlag {
+		isSweep = 1
+	}
+	cmd = A
+	if isRelative {
+		cmd = AR
+	}
+	p.addAction(Action{cmd,
+		ActionParams{
+			Param{rx, ry},
+			Param{xAxisRotation},
+			Param{isLarge, isSweep},
 			Param{x, y},
 		}})
 	return p

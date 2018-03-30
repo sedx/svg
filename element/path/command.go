@@ -24,6 +24,10 @@ const (
 	S = "S"
 	// SR is s path command
 	SR = "s"
+	// A path command
+	A = "A"
+	// AR is a path command
+	AR = "a"
 	// Z is Z path command
 	Z = "Z"
 )
