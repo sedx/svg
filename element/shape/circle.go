@@ -16,6 +16,7 @@ type Circle struct {
 	element.SVGElement
 	attributes.Centred
 	animation.Animated
+	attributes.Presenation
 	R       types.Length `xml:"r,attr"`
 	XMLName xml.Name     `xml:"circle"`
 }
