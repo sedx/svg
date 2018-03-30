@@ -92,8 +92,14 @@ type Core struct {
 	Space types.XMLSpace `xml:"space,attr,omitempty"`
 }
 
+type MaskSource interface {
+	GetID() string
+	MarshalXMLAttr(name xml.Name) (xml.Attr, error)
+}
+
 type Presenation struct {
 	Filled
 	Stroked
-	Filter Filter `xml:"filter,attr,omitempty"`
+	Filter Filter     `xml:"filter,attr,omitempty"`
+	Mask   MaskSource `xml:"mask,attr,omitempty"`
 }

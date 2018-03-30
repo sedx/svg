@@ -26,5 +26,5 @@ func (m *Mask) MarshalXMLAttr(name xml.Name) (xml.Attr, error) {
 	if m.ID == "" {
 		return xml.Attr{}, fmt.Errorf("ID is missing for %s", name)
 	}
-	return xml.Attr{Name: name, Value: fmt.Sprintf("url(#%s)", m.ID)}, nil
+	return xml.Attr{Name: name, Value: fmt.Sprintf("url(#%s)", m.GetID())}, nil
 }
