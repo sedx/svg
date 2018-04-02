@@ -15,6 +15,7 @@ type SVG struct {
 	element.SVGElement
 	attributes.Measured
 	attributes.ViewBoxed
+	attributes.GraphicalEvent
 	element.SVGContainer
 	X       types.Coordinate `xml:"x,attr,omitempty"`
 	Y       types.Coordinate `xml:"y,attr,omitempty"`
