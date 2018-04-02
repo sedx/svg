@@ -103,3 +103,7 @@ type Presenation struct {
 	Filter Filter     `xml:"filter,attr,omitempty"`
 	Mask   MaskSource `xml:"mask,attr,omitempty"`
 }
+
+type GraphicalEvent struct {
+	OnLoad string `xml:"onload,attr"`
+}
